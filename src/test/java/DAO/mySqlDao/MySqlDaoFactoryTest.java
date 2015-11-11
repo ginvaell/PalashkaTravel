@@ -1,4 +1,4 @@
-package DAO;
+package DAO.mySqlDao;
 
 import DAO.mySqlDao.MySqlDaoFactory;
 

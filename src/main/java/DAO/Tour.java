@@ -33,8 +33,8 @@ public class Tour {
         this.name = name;
     }
 
-    public Type getType() {
-        return type;
+    public String getType() {
+        return type.getName();
     }
 
     public void setType(String strType) {
@@ -63,6 +63,19 @@ public class Tour {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    @Override
+    public String toString() {
+        return "Tour{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", type=" + type +
+                ", description='" + description + '\'' +
+                ", discount=" + discount +
+                ", count=" + count +
+                ", price=" + price +
+                "}\n";
     }
 
     public enum Type {

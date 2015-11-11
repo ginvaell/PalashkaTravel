@@ -1,1 +1,1 @@
-SELECT id, name, type, description, discount, count FROM tour WHERE id="1";
+SELECT id, name, price, type, description, discount, count FROM tour

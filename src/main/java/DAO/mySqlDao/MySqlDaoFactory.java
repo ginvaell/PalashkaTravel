@@ -2,8 +2,13 @@ package DAO.mySqlDao;
 
 import DAO.DaoFactory;
 import DAO.TourDao;
-import com.mysql.fabric.jdbc.FabricMySQLDriver;
+//import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
+
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -17,9 +22,23 @@ public class MySqlDaoFactory implements DaoFactory {
 
 
     public static Connection getConnection() throws SQLException {
-        driver = new FabricMySQLDriver();
-        DriverManager.registerDriver(driver);
-        return DriverManager.getConnection(url, user, password);
+//        driver = new FabricMySQLDriver();
+//        DriverManager.registerDriver(driver);
+//        return DriverManager.getConnection(url, user, password);
+        InitialContext initContext= null;
+        try {
+            initContext = new InitialContext();
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
+        DataSource ds = null;
+        try {
+            ds = (DataSource) initContext.lookup("java:comp/env/jdbc/travel_agency");
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
+        Connection conn = ds.getConnection();
+        return conn;
     }
 
     public TourDao getTourDao() {
