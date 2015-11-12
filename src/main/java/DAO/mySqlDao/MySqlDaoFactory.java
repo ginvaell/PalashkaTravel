@@ -2,6 +2,7 @@ package DAO.mySqlDao;
 
 import DAO.DaoFactory;
 import DAO.TourDao;
+import DAO.TypeDao;
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 //import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
@@ -44,5 +45,10 @@ public class MySqlDaoFactory implements DaoFactory {
 
     public TourDao getTourDao() {
         return new MySqlTourDao();
+    }
+
+    @Override
+    public TypeDao getTypeDao() {
+        return new MySqlTypeDao();
     }
 }

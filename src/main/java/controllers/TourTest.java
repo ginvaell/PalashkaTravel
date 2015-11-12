@@ -5,7 +5,6 @@ import DAO.beans.Tour;
 import DAO.TourDao;
 import DAO.criterias.TourCriteria;
 import DAO.mySqlDao.MySqlDaoFactory;
-import DAO.mySqlDao.MySqlTourDao;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,7 +28,7 @@ public class TourTest extends HttpServlet {
         Tour tour = tourDao.read(1);
         TourCriteria criteria = new TourCriteria();
         criteria.setPriceOver("50000");
-        System.out.println(tourDao.readAllWhere(criteria));
+        System.out.println(tourDao.readAll());
         request.setAttribute("tour", tour);
         request.getRequestDispatcher("/WEB-INF/jsp/tourtest.jsp").forward(request, response);
     }

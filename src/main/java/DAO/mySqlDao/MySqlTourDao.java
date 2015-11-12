@@ -11,57 +11,30 @@ import java.util.List;
 import static DAO.mySqlDao.MySqlTourDao.State.DETAILS;
 import static DAO.mySqlDao.MySqlTourDao.State.LIST;
 
-public class MySqlTourDao implements TourDao {
+public class MySqlTourDao extends MySqlAbstractReadDao implements TourDao {
 
     private static final String baseColumns = "tour.end, tour.start, tour.id, tour.price, tour.name, tour.discount, tour.count";
     private static final String  detail = ", tour.description ";
     private static final String table = "tour";
     private State state = LIST;
+    TourCriteria criteria;
+
+    public void setCriteria(TourCriteria criteria) {
+        this.criteria = criteria;
+    }
 
     public Tour read(int id) {
-        TourCriteria criteria = new TourCriteria();
+        criteria = new TourCriteria();
         criteria.setId(String.valueOf(id));
         state = DETAILS;
-        List<Tour> list = readAllWhere(criteria);
+        List<Tour> list = readAll();
         state = LIST;
+        criteria = null;
         if (list.isEmpty()) return null;
         else return list.get(0);
-//        String sql = "SELECT " + columns + ", tour.description " + " FROM " + table + " WHERE id=?;";
-//        try (Connection connection = MySqlDaoFactory.getConnection()) {
-//            PreparedStatement statement = connection.prepareStatement(sql);
-//            statement.setInt(1, id);
-//
-//            ResultSet resultSet = statement.executeQuery();
-//            while (resultSet.next()) {
-//                return parseResultSet(resultSet, 1);
-//            }
-//
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
     }
 
-    @Override
-    public List<Tour> readAllWhere(TourCriteria criteria) {
-        List<Tour> list = new ArrayList<>();
-        String sql;
-        System.out.println(sql = parseCriteria(criteria));
-        try (Connection connection = MySqlDaoFactory.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-
-            ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                list.add(parseResultSet(resultSet, 0));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-
-    private Tour parseResultSet(ResultSet rs, int type) throws SQLException {
+    protected Tour parseResultSet(ResultSet rs) throws SQLException {
         Tour tour = new Tour();
         tour.setId(rs.getInt("tour.id"));
         tour.setName(rs.getString("tour.name"));
@@ -71,11 +44,15 @@ public class MySqlTourDao implements TourDao {
         tour.setPrice(rs.getInt("tour.price"));
         tour.setStart(rs.getDate("tour.start"));
         tour.setEnd(rs.getDate("tour.end"));
-        if (type > 0) tour.setDescription(rs.getString("tour.description"));
+        if (state.compareTo(DETAILS) >= 0) tour.setDescription(rs.getString("tour.description"));
         return tour;
     }
 
-    private String parseCriteria(TourCriteria criteria) {
+    protected String readAllQuery() {
+        return parseCriteria();
+    }
+
+    private String parseCriteria() {
         String sql = "SELECT " + state.getColumns() + " FROM " + table + " WHERE 1=1";
         if (criteria != null) {
             String tmp;
@@ -99,9 +76,7 @@ public class MySqlTourDao implements TourDao {
         return sql;
     }
 
-    private String toQuote(String str) {
-        return "'"+str+"'";
-    }
+
 
     enum State {
         LIST(baseColumns),
