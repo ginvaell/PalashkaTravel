@@ -4,7 +4,7 @@ import DAO.DaoFactory;
 import DAO.beans.Tour;
 import DAO.TourDao;
 import DAO.criterias.TourCriteria;
-import DAO.mySqlDao.MySqlDaoFactory;
+import DAO.mySql.MySqlDaoFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -1,6 +1,4 @@
-package DAO.mySqlDao;
-
-import DAO.mySqlDao.MySqlDaoFactory;
+package DAO.mySql;
 
 import java.sql.Connection;
 

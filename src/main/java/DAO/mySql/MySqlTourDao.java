@@ -1,15 +1,14 @@
-package DAO.mySqlDao;
+package DAO.mySql;
 
 import DAO.beans.Tour;
 import DAO.TourDao;
 import DAO.criterias.TourCriteria;
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
 
-import static DAO.mySqlDao.MySqlTourDao.State.DETAILS;
-import static DAO.mySqlDao.MySqlTourDao.State.LIST;
+import static DAO.mySql.MySqlTourDao.State.DETAILS;
+import static DAO.mySql.MySqlTourDao.State.LIST;
 
 public class MySqlTourDao extends MySqlAbstractReadDao implements TourDao {
 

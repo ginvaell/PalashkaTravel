@@ -1,16 +1,12 @@
-package DAO.mySqlDao;
+package DAO.mySql;
 
 import DAO.TypeDao;
 import DAO.beans.Type;
 import DAO.criterias.TypeCriteria;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.StreamHandler;
 
 public class MySqlTypeDao extends MySqlAbstractReadDao implements TypeDao {
     private static final String baseColumns = "types.id, types.name";

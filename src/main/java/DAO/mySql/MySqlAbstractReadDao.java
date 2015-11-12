@@ -1,4 +1,4 @@
-package DAO.mySqlDao;
+package DAO.mySql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

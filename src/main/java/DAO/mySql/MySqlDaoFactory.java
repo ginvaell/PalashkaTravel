@@ -1,5 +1,6 @@
-package DAO.mySqlDao;
+package DAO.mySql;
 
+import DAO.CityDao;
 import DAO.DaoFactory;
 import DAO.TourDao;
 import DAO.TypeDao;
@@ -7,10 +8,6 @@ import com.mysql.fabric.jdbc.FabricMySQLDriver;
 //import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
 
-
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -50,5 +47,10 @@ public class MySqlDaoFactory implements DaoFactory {
     @Override
     public TypeDao getTypeDao() {
         return new MySqlTypeDao();
+    }
+
+    @Override
+    public CityDao getCityDao() {
+        return new MySqlCityDao();
     }
 }

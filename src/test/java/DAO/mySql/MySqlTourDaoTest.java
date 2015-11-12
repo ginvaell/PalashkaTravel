@@ -1,4 +1,4 @@
-package DAO.mySqlDao;
+package DAO.mySql;
 
 import DAO.DaoFactory;
 import DAO.beans.Tour;
