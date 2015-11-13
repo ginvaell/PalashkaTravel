@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class MySqlUserDao extends MySqlAbstractReadDao<User> implements UserDao {
 
-    private static final String table = "user";
+    private static final String table = "users";
     private static final String baseColumns = "main.id, main.name, main.discount, main.login, main.password, main.role";
 
     @Override
