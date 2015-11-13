@@ -9,6 +9,5 @@ import java.util.List;
 
 public interface CityDao {
     City read(int id);
-    List<City> readAll();
-    void setCriteria(CityCriteria criteria);
+    List<City> readAll(Criteria criteria);
 }

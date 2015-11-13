@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface TypeDao {
     Type read(int id);
-    List<Type> readAll();
+    List<Type> readAll(Criteria criteria);
 
-    void setCriteria(TypeCriteria criteria);
 }

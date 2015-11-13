@@ -1,9 +1,8 @@
 package DAO.mySql;
 
-import DAO.CityDao;
-import DAO.DaoFactory;
-import DAO.TourDao;
-import DAO.TypeDao;
+import DAO.*;
+import DAO.criterias.*;
+import DAO.mySql.criterias.*;
 import com.mysql.fabric.jdbc.FabricMySQLDriver;
 //import com.mysql.fabric.jdbc.FabricMySQLDriver;
 
@@ -52,5 +51,35 @@ public class MySqlDaoFactory implements DaoFactory {
     @Override
     public CityDao getCityDao() {
         return new MySqlCityDao();
+    }
+
+    @Override
+    public HotelDao getHotelDao() {
+        return new MySqlHotelDao();
+    }
+
+    @Override
+    public BaseCriteria getBaseCriteria() {
+        return new MySqlBaseCriteria();
+    }
+
+    @Override
+    public CityCriteria getCityCriteria() {
+        return new MySqlCityCriteria();
+    }
+
+    @Override
+    public HotelCriteria getHotelCriteria() {
+        return new MySqlHotelCriteria();
+    }
+
+    @Override
+    public TourCriteria getTourCriteria() {
+        return new MySqlTourCriteria();
+    }
+
+    @Override
+    public TypeCriteria getTypeCriteria() {
+        return new MySqlTypeCriteria();
     }
 }

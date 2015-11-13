@@ -4,6 +4,7 @@ import DAO.DaoFactory;
 import DAO.TypeDao;
 import DAO.beans.Type;
 import DAO.criterias.TypeCriteria;
+import DAO.mySql.criterias.MySqlTypeCriteria;
 import org.junit.Test;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class MySqlTypeDaoTest {
 
     @Test
     public void testReadAllQuery() throws Exception {
-        TypeCriteria criteria = new TypeCriteria();
+        TypeCriteria criteria = factory.getTypeCriteria();
         criteria.setName("Отдых");
         checkReadAll(criteria);
         checkReadAll(null);
@@ -32,8 +33,7 @@ public class MySqlTypeDaoTest {
 
     private void checkReadAll(TypeCriteria criteria) {
         List<Type> list;
-        typeDao.setCriteria(criteria);
-        list = typeDao.readAll();
+        list = typeDao.readAll(criteria);
         assertTrue(!list.isEmpty());
         System.out.println(list+"\n");
     }

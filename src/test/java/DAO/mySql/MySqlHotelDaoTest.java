@@ -2,43 +2,45 @@ package DAO.mySql;
 
 import DAO.CityDao;
 import DAO.DaoFactory;
-import DAO.TypeDao;
+import DAO.HotelDao;
 import DAO.beans.City;
-import DAO.beans.Type;
+import DAO.beans.Hotel;
 import DAO.criterias.CityCriteria;
-import DAO.criterias.TypeCriteria;
-import DAO.mySql.criterias.MySqlCityCriteria;
+import DAO.criterias.HotelCriteria;
 import org.junit.Test;
 
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-public class MySqlCityDaoTest {
+public class MySqlHotelDaoTest {
 
     DaoFactory factory= new MySqlDaoFactory();
-    CityDao typeDao = factory.getCityDao();
+    HotelDao typeDao = factory.getHotelDao();
 
     @Test
     public void testRead() throws Exception {
-        City city = typeDao.read(1);
-        assertTrue(city != null);
-        System.out.println(city);
+        Hotel hotel = typeDao.read(1);
+        assertTrue(hotel != null);
+        System.out.println(hotel);
     }
 
     @Test
     public void testReadAllQuery() throws Exception {
-        CityCriteria criteria = factory.getCityCriteria();
+        HotelCriteria criteria = factory.getHotelCriteria();
+        criteria.setName("Hotel1");
+        checkReadAll(criteria);
+        criteria = factory.getHotelCriteria();
         criteria.setCity("Лондон");
         checkReadAll(criteria);
-        criteria = factory.getCityCriteria();
-        criteria.setCountry("Россия");
+        criteria = factory.getHotelCriteria();
+        criteria.setStarsOver("3");
         checkReadAll(criteria);
         checkReadAll(null);
     }
 
-    private void checkReadAll(CityCriteria criteria) {
-        List<City> list;
+    private void checkReadAll(HotelCriteria criteria) {
+        List<Hotel> list;
         list = typeDao.readAll(criteria);
         assertTrue(!list.isEmpty());
         System.out.println(list+"\n");

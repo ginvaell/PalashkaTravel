@@ -4,6 +4,7 @@ import DAO.DaoFactory;
 import DAO.beans.Tour;
 import DAO.TourDao;
 import DAO.criterias.TourCriteria;
+import DAO.mySql.criterias.MySqlTourCriteria;
 import org.junit.Test;
 
 import java.util.List;
@@ -26,23 +27,23 @@ public class MySqlTourDaoTest {
 
     @Test
     public void testReadAllWhere() throws Exception {
-        TourCriteria criteria = new TourCriteria();
+        TourCriteria criteria = factory.getTourCriteria();
         criteria.setId("2");
         checkReadAll(criteria);
 
-        criteria = new TourCriteria();
+        criteria = factory.getTourCriteria();
         criteria.setName("Супер Париж");
         checkReadAll(criteria);
 
-        criteria = new TourCriteria();
+        criteria = factory.getTourCriteria();
         criteria.setCountOver("5");
         checkReadAll(criteria);
 
-        criteria = new TourCriteria();
+        criteria = factory.getTourCriteria();
         criteria.setDiscountOver("5");
         checkReadAll(criteria);
 
-        criteria = new TourCriteria();
+        criteria = factory.getTourCriteria();
         criteria.setStartOver("2015-11-01");
         checkReadAll(criteria);
 
@@ -50,8 +51,7 @@ public class MySqlTourDaoTest {
 
     private void checkReadAll(TourCriteria criteria) {
         List<Tour> list;
-        tourDao.setCriteria(criteria);
-        list = tourDao.readAll();
+        list = tourDao.readAll(criteria);
         assertTrue(!list.isEmpty());
         System.out.println(list+"\n");
     }

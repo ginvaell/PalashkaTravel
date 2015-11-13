@@ -7,6 +7,5 @@ import java.util.List;
 
 public interface TourDao {
     Tour read(int id);
-    List<Tour> readAll();
-    void setCriteria(TourCriteria criteria);
+    List<Tour> readAll(Criteria criteria);
 }
