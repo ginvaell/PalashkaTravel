@@ -8,46 +8,28 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class MySqlTypeDao extends MySqlAbstractReadDao implements TypeDao {
-    private static final String baseColumns = "types.id, types.name";
+public class MySqlTypeDao extends MySqlAbstractReadDao<Type> implements TypeDao {
     private static final String table = "types";
-    private TypeCriteria criteria;
+    private static final String baseColumns = "main.id, main.name";
 
-    public void setCriteria(TypeCriteria criteria) {
-        this.criteria = criteria;
+
+    @Override
+    protected String getColumns() {
+        return baseColumns;
     }
 
     @Override
-    public Type read(int id) {
-        criteria = new TypeCriteria();
-        criteria.setId(String.valueOf(id));
-        List<Type> list = readAll();
-        criteria = null;
-        return list.isEmpty() ? null : list.get(0);
+    protected String getTable() {
+        return table;
     }
 
     @Override
-    protected Object parseResultSet(ResultSet resultSet) throws SQLException {
+    protected Type parseResultSet(ResultSet resultSet) throws SQLException {
         Type type = new Type();
-        type.setId(resultSet.getInt("id"));
-        type.setName(resultSet.getString("name"));
+        type.setId(resultSet.getInt("main.id"));
+        type.setName(resultSet.getString("main.name"));
         return type;
     }
 
-    @Override
-    protected String readAllQuery() {
-        return parseCriteria();
-    }
-
-    private String parseCriteria() {
-        String sql = "SELECT " + baseColumns + " FROM " + table + " WHERE 1=1";
-        if (criteria != null) {
-            String tmp;
-            if ((tmp = criteria.getId()) != null) sql += " AND id=" + tmp;
-            if ((tmp = criteria.getName()) != null) sql += " AND name=" + toQuote(tmp);
-        }
-        sql += ";";
-        return sql;
-    }
 
 }

@@ -1,6 +1,8 @@
 package DAO.criterias;
 
-public class CityCriteria {
+import DAO.Criteria;
+
+public abstract class CityCriteria implements Criteria{
     private String id;
     private String city;
     private String country;

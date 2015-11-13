@@ -1,6 +1,8 @@
 package DAO.criterias;
 
-public class TourCriteria {
+import DAO.Criteria;
+
+public abstract class TourCriteria implements Criteria{
     private String id;
     private String name;
     private String type;

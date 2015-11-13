@@ -1,9 +1,8 @@
 package DAO.criterias;
 
-/**
- * Created by ginva_000 on 12.11.2015.
- */
-public class TypeCriteria {
+import DAO.Criteria;
+
+public abstract class TypeCriteria implements Criteria{
     String id;
     String name;
 
