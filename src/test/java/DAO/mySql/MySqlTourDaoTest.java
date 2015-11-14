@@ -40,11 +40,19 @@ public class MySqlTourDaoTest {
         checkReadAll(criteria);
 
         criteria = factory.getTourCriteria();
-        criteria.setDiscountOver("5");
+        criteria.setDiscountUnder("5");
         checkReadAll(criteria);
 
         criteria = factory.getTourCriteria();
         criteria.setStartOver("2015-11-01");
+        checkReadAll(criteria);
+
+        criteria = factory.getTourCriteria();
+        criteria.setHotel("Hotel1");
+        checkReadAll(criteria);
+
+        criteria = factory.getTourCriteria();
+        criteria.setType("Отдых");
         checkReadAll(criteria);
 
     }

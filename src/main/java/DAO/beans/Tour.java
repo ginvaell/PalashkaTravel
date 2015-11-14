@@ -1,19 +1,21 @@
 package DAO.beans;
 
-import com.sun.xml.internal.txw2.DatatypeWriter;
-
 import java.util.Date;
 
 public class Tour {
     private int id;
     private String name;
-    private int type;
+    private int typeId;
+    private String type;
     private String description;
     private int discount;
     private int count;
     private int price;
     private Date start;
     private Date end;
+    private String img;
+    private String hotel;
+    private int hotelId;
 
     public int getPrice() {
         return price;
@@ -39,11 +41,11 @@ public class Tour {
         this.name = name;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
 
@@ -87,6 +89,38 @@ public class Tour {
         this.end = end;
     }
 
+    public int getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
+    public String getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(String hotel) {
+        this.hotel = hotel;
+    }
+
+    public int getHotelId() {
+        return hotelId;
+    }
+
+    public void setHotelId(int hotelId) {
+        this.hotelId = hotelId;
+    }
+
     @Override
     public String toString() {
         return "Tour{" +
@@ -101,23 +135,5 @@ public class Tour {
                 ", end=" + end +
                 "}\n";
     }
-//    public enum Type {
-//        REST("Отдых"),
-//        TOURISM("Экскурсия"),
-//        SHOPPING("Шоппинг");
-//
-//        private final String name;
-//        Type(String name) {
-//            this.name = name;
-//        }
-//
-//        @Override
-//        public String toString() {
-//            return name;
-//        }
-//
-//        public String getName() {
-//            return name;
-//        }
-//    }
+
 }

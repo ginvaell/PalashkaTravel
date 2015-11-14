@@ -6,6 +6,9 @@ public abstract class TourCriteria implements Criteria{
     private String id;
     private String name;
     private String type;
+    private String typeId;
+    private String hotel;
+    private String hotelId;
     private String start;
     private String end;
     private String startOver;
@@ -43,6 +46,30 @@ public abstract class TourCriteria implements Criteria{
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(String typeId) {
+        this.typeId = typeId;
+    }
+
+    public String getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(String hotel) {
+        this.hotel = hotel;
+    }
+
+    public String getHotelId() {
+        return hotelId;
+    }
+
+    public void setHotelId(String hotelId) {
+        this.hotelId = hotelId;
     }
 
     public String getPriceOver() {

@@ -10,9 +10,12 @@ public class MySqlTourCriteria extends TourCriteria {
         String sql = "";
         String tmp;
         if ((tmp = getId()) != null) sql += " AND main.id=" + tmp;
+        if ((tmp = getTypeId()) != null) sql += " AND main.type=" + tmp;
+        if ((tmp = getHotelId()) != null) sql += " AND main.hotel=" + tmp;
         if ((tmp = getName()) != null) sql += " AND main.name=" + toQuote(tmp);
-//            if ((tmp = getType()) != null) sql += " AND main.type=" + tmp;
         if ((tmp = getStart()) != null) sql += " AND main.start=" + toQuote(tmp);
+        if ((tmp = getType()) != null) sql += " AND types.name=" + toQuote(tmp);
+        if ((tmp = getHotel()) != null) sql += " AND hotel.name=" + toQuote(tmp);
         if ((tmp = getStartOver()) != null) sql += " AND main.start>" + toQuote(tmp);
         if ((tmp = getStartUnder()) != null) sql += " AND main.start<" + toQuote(tmp);
         if ((tmp = getEnd()) != null) sql += " AND main.end=" + toQuote(tmp);
