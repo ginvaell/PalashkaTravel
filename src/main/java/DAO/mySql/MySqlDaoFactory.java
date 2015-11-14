@@ -64,6 +64,11 @@ public class MySqlDaoFactory implements DaoFactory {
     }
 
     @Override
+    public PurchaseDao getPurchaseDao() {
+        return new MySqlPurchaseDao();
+    }
+
+    @Override
     public BaseCriteria getBaseCriteria() {
         return new MySqlBaseCriteria();
     }
@@ -91,5 +96,10 @@ public class MySqlDaoFactory implements DaoFactory {
     @Override
     public UserCriteria getUserCriteria() {
         return new MySqlUserCriteria();
+    }
+
+    @Override
+    public PurchaseCriteria getPurchaseCriteria() {
+        return new MySqlPurchaseCriteria();
     }
 }

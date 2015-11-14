@@ -14,6 +14,8 @@ public interface DaoFactory {
 
     UserDao getUserDao();
 
+    PurchaseDao getPurchaseDao();
+
     BaseCriteria getBaseCriteria();
 
     CityCriteria getCityCriteria();
@@ -25,4 +27,6 @@ public interface DaoFactory {
     TypeCriteria getTypeCriteria();
 
     UserCriteria getUserCriteria();
+
+    PurchaseCriteria getPurchaseCriteria();
 }
