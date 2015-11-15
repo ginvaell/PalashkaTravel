@@ -17,8 +17,8 @@ public class MySqlPurchaseCriteria extends PurchaseCriteria {
         if ((tmp = getTourId()) != null) sql += " AND tour.id=" + tmp;
         if ((tmp = getCountOver()) != null) sql += " AND main.count >" + tmp;
         if ((tmp = getCountUnder()) != null) sql += " AND main.count <" + tmp;
-        if ((tmp = getPriceOver()) != null) sql += " AND city.price >" + tmp;
-        if ((tmp = getPriceUnder()) != null) sql += " AND city.price <" + tmp;
+        if ((tmp = getPriceOver()) != null) sql += " AND main.price >" + tmp;
+        if ((tmp = getPriceUnder()) != null) sql += " AND main.price <" + tmp;
 
 //        sql += ";";
         return sql;

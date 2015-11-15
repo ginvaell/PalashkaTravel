@@ -2,11 +2,8 @@ package DAO.mySql;
 
 import DAO.DaoFactory;
 import DAO.PurchaseDao;
-import DAO.UserDao;
 import DAO.beans.Purchase;
-import DAO.beans.User;
 import DAO.criterias.PurchaseCriteria;
-import DAO.criterias.UserCriteria;
 import org.junit.Test;
 
 import java.util.List;
@@ -15,13 +12,13 @@ import static org.junit.Assert.assertTrue;
 
 public class MySqlPurchaseDaoTest {
     DaoFactory factory= new MySqlDaoFactory();
-    PurchaseDao purchaseDao = factory.getPurchaseDao();
+    PurchaseDao dao = factory.getPurchaseDao();
 
 
     @Test
     public void testRead() throws Exception {
 
-        Purchase purchase = purchaseDao.read(1);
+        Purchase purchase = dao.readById(1);
         assertTrue(purchase != null);
         System.out.println(purchase);
 
@@ -53,8 +50,26 @@ public class MySqlPurchaseDaoTest {
 
     private void checkReadAll(PurchaseCriteria criteria) {
         List<Purchase> list;
-        list = purchaseDao.readAll(criteria);
+        list = dao.read(criteria);
         assertTrue(!list.isEmpty());
         System.out.println(list+"\n");
+    }
+
+    @Test
+    public void testWriteAndDelete() throws Exception {
+        Purchase been = new Purchase() ;
+        been.setUserId(1);
+        been.setPrice(1);
+        been.setTourId(1);
+        been.setCount(5);
+        assertTrue(dao.write(been));
+        PurchaseCriteria criteria = factory.getPurchaseCriteria();
+        criteria.setPriceUnder("2");
+        assertTrue(dao.delete(criteria));
+    }
+    @Test
+    public void testUpdate() {
+        Purchase been = dao.readById(1);
+        assertTrue(dao.updateById(been, 1));
     }
 }

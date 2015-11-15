@@ -2,16 +2,14 @@ package DAO.mySql;
 
 import DAO.TypeDao;
 import DAO.beans.Type;
-import DAO.criterias.TypeCriteria;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
-public class MySqlTypeDao extends MySqlAbstractReadDao<Type> implements TypeDao {
+public class MySqlTypeDao extends MySqlAbstractDao<Type> implements TypeDao {
     private static final String table = "types";
     private static final String baseColumns = "main.id, main.name";
-
+    private static final String details = "";
 
     @Override
     protected String getColumns() {
@@ -29,6 +27,20 @@ public class MySqlTypeDao extends MySqlAbstractReadDao<Type> implements TypeDao 
         type.setId(resultSet.getInt("main.id"));
         type.setName(resultSet.getString("main.name"));
         return type;
+    }
+
+    @Override
+    protected String parseBeenForUpdate(Type been) {
+        return "";
+    }
+
+    @Override
+    protected String parseBeen(Type been) {
+        return "";
+    }
+
+    protected String getAllColumns() {
+        return baseColumns;
     }
 
 

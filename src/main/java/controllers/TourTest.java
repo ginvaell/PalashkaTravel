@@ -25,10 +25,10 @@ public class TourTest extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DaoFactory factory = new MySqlDaoFactory();
         TourDao tourDao = factory.getTourDao();
-        Tour tour = tourDao.read(1);
+        Tour tour = tourDao.readById(1);
         TourCriteria criteria = factory.getTourCriteria();
         criteria.setPriceOver("50000");
-        System.out.println(tourDao.readAll(criteria));
+        System.out.println(tourDao.read(null));
         request.setAttribute("tour", tour);
         request.getRequestDispatcher("/WEB-INF/jsp/tourtest.jsp").forward(request, response);
     }

@@ -23,8 +23,6 @@ public class MySqlTourCriteria extends TourCriteria {
         if ((tmp = getEndUnder()) != null) sql += " AND main.end<" + toQuote(tmp);
         if ((tmp = getPriceOver()) != null) sql += " AND main.price >" + tmp;
         if ((tmp = getPriceUnder()) != null) sql += " AND main.price <" + tmp;
-        if ((tmp = getCountOver()) != null) sql += " AND main.count >" + tmp;
-        if ((tmp = getCountUnder()) != null) sql += " AND main.count <" + tmp;
         if ((tmp = getDiscountOver()) != null) sql += " AND main.discount >" + tmp;
         if ((tmp = getDiscountUnder()) != null) sql += " AND main.discount <" + tmp;
 

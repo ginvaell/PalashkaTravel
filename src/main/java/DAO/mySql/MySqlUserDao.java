@@ -6,11 +6,13 @@ import DAO.beans.User;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import static DAO.mySql.Utils.toQuote;
 
-public class MySqlUserDao extends MySqlAbstractReadDao<User> implements UserDao {
+
+public class MySqlUserDao extends MySqlAbstractDao<User> implements UserDao {
 
     private static final String table = "users";
-    private static final String baseColumns = "main.id, main.name, main.discount, main.login, main.password, main.role";
+    private static final String baseColumns = "main.id, main.login, main.name, main.password, main.discount, main.role";
 
     @Override
     protected String getColumns() {
@@ -32,5 +34,31 @@ public class MySqlUserDao extends MySqlAbstractReadDao<User> implements UserDao 
         user.setDiscount(rs.getInt("main.discount"));
         return user;
     }
+
+    @Override
+    protected String parseBeenForUpdate(User been) {
+        return "login="+toQuote(been.getLogin()) + " ," +
+               "name="+ toQuote(been.getName()) + " ," +
+               "password="+ toQuote(been.getPassword()) + " ," +
+               "discount="+ been.getDiscount() + " ," +
+               "role="+ toQuote(been.getRole());
+    }
+
+    @Override
+    protected String parseBeen(User been) {
+        return toQuote(been.getLogin()) + " ," +
+                toQuote(been.getName()) + " ," +
+                toQuote(been.getPassword()) + " ," +
+                been.getDiscount() + " ," +
+                toQuote(been.getRole());
+
+
+    }
+
+    @Override
+    protected String getAllColumns() {
+        return baseColumns;
+    }
+
 
 }

@@ -9,10 +9,9 @@ public class Tour {
     private String type;
     private String description;
     private int discount;
-    private int count;
     private int price;
-    private Date start;
-    private Date end;
+    private String start;
+    private String end;
     private String img;
     private String hotel;
     private int hotelId;
@@ -65,27 +64,19 @@ public class Tour {
         this.discount = discount;
     }
 
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public Date getStart() {
+    public String getStart() {
         return start;
     }
 
-    public void setStart(Date start) {
+    public void setStart(String start) {
         this.start = start;
     }
 
-    public Date getEnd() {
+    public String getEnd() {
         return end;
     }
 
-    public void setEnd(Date end) {
+    public void setEnd(String end) {
         this.end = end;
     }
 
@@ -129,7 +120,6 @@ public class Tour {
                 ", type=" + type +
                 ", description='" + description + '\'' +
                 ", discount=" + discount +
-                ", count=" + count +
                 ", price=" + price +
                 ", start=" + start +
                 ", end=" + end +

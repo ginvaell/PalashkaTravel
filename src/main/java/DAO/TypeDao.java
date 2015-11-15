@@ -8,7 +8,6 @@ import DAO.criterias.TypeCriteria;
 import java.util.List;
 
 public interface TypeDao {
-    Type read(int id);
-    List<Type> readAll(Criteria criteria);
-
+    Type readById(int id);
+    List<Type> read(Criteria criteria);
 }

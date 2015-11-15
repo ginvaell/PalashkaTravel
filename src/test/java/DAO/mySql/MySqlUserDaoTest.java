@@ -1,11 +1,8 @@
 package DAO.mySql;
 
 import DAO.DaoFactory;
-import DAO.TourDao;
 import DAO.UserDao;
-import DAO.beans.Tour;
 import DAO.beans.User;
-import DAO.criterias.TourCriteria;
 import DAO.criterias.UserCriteria;
 import org.junit.Test;
 
@@ -14,14 +11,14 @@ import java.util.List;
 import static org.junit.Assert.assertTrue;
 
 public class MySqlUserDaoTest {
-    DaoFactory factory= new MySqlDaoFactory();
-    UserDao userDao = factory.getUserDao();
+    DaoFactory factory = new MySqlDaoFactory();
+    UserDao dao = factory.getUserDao();
 
 
     @Test
     public void testRead() throws Exception {
 
-        User user = userDao.read(1);
+        User user = dao.readById(1);
         assertTrue(user != null);
         System.out.println(user);
 
@@ -49,8 +46,28 @@ public class MySqlUserDaoTest {
 
     private void checkReadAll(UserCriteria criteria) {
         List<User> list;
-        list = userDao.readAll(criteria);
+        list = dao.read(criteria);
         assertTrue(!list.isEmpty());
-        System.out.println(list+"\n");
+        System.out.println(list + "\n");
+    }
+
+    @Test
+    public void testWriteAndDelete() throws Exception {
+        User been = new User();
+        been.setName("test");
+        been.setDiscount(5);
+        been.setRole("test");
+        been.setLogin("test");
+        been.setPassword("test");
+        assertTrue(dao.write(been));
+        UserCriteria criteria = factory.getUserCriteria();
+        criteria.setName("test");
+        assertTrue(dao.delete(criteria));
+    }
+
+    @Test
+    public void testUpdate() {
+        User been = dao.readById(1);
+        assertTrue(dao.updateById(been, 1));
     }
 }

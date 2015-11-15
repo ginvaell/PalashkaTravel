@@ -2,13 +2,15 @@ package DAO.mySql;
 
 import DAO.CityDao;
 import DAO.beans.City;
-import DAO.criterias.CityCriteria;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
-public class MySqlCityDao extends MySqlAbstractReadDao<City> implements CityDao {
+import static DAO.mySql.Utils.*;
+
+public class MySqlCityDao extends MySqlAbstractDao<City> implements CityDao {
     private  final String table = "city";
     private final String baseColumns = "main.id, main.city, main.country";
 
@@ -31,5 +33,20 @@ public class MySqlCityDao extends MySqlAbstractReadDao<City> implements CityDao 
         return city;
     }
 
+    @Override
+    protected String parseBeenForUpdate(City been) {
+        return "city="+toQuote(been.getCity())+" ,"+
+               "country="+ toQuote(been.getCountry());
+    }
 
+    @Override
+    protected String parseBeen(City been) {
+        return toQuote(been.getCity())+" ,"+
+                toQuote(been.getCountry());
+    }
+
+    @Override
+    public String getAllColumns() {
+        return baseColumns;
+    }
 }

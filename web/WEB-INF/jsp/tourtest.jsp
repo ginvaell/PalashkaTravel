@@ -17,7 +17,6 @@
 <jsp:getProperty name="tour" property="name" />
 <jsp:getProperty name="tour" property="type" />
 <jsp:getProperty name="tour" property="description" />
-<jsp:getProperty name="tour" property="count" />
 <jsp:getProperty name="tour" property="price" />
 </body>
 </html>

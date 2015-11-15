@@ -1,11 +1,8 @@
 package DAO.mySql;
 
-import DAO.CityDao;
 import DAO.DaoFactory;
 import DAO.HotelDao;
-import DAO.beans.City;
 import DAO.beans.Hotel;
-import DAO.criterias.CityCriteria;
 import DAO.criterias.HotelCriteria;
 import org.junit.Test;
 
@@ -16,11 +13,11 @@ import static org.junit.Assert.assertTrue;
 public class MySqlHotelDaoTest {
 
     DaoFactory factory= new MySqlDaoFactory();
-    HotelDao typeDao = factory.getHotelDao();
+    HotelDao dao = factory.getHotelDao();
 
     @Test
     public void testRead() throws Exception {
-        Hotel hotel = typeDao.read(1);
+        Hotel hotel = dao.readById(1);
         assertTrue(hotel != null);
         System.out.println(hotel);
     }
@@ -41,8 +38,26 @@ public class MySqlHotelDaoTest {
 
     private void checkReadAll(HotelCriteria criteria) {
         List<Hotel> list;
-        list = typeDao.readAll(criteria);
+        list = dao.read(criteria);
         assertTrue(!list.isEmpty());
         System.out.println(list+"\n");
+    }
+
+    @Test
+    public void testWriteAndDelete() throws Exception {
+        Hotel been = new Hotel() ;
+        been.setCityId(1);
+        been.setName("test");
+        been.setStars(5);
+        assertTrue(dao.write(been));
+        HotelCriteria criteria = factory.getHotelCriteria();
+        criteria.setName("test");
+        assertTrue(dao.delete(criteria));
+    }
+
+    @Test
+    public void testUpdate() {
+        Hotel been = dao.readById(1);
+        assertTrue(dao.updateById(been, 1));
     }
 }
