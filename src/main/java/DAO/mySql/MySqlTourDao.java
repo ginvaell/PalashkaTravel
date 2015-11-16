@@ -13,10 +13,10 @@ public class MySqlTourDao extends MySqlAbstractDao<Tour> implements TourDao {
 
     private static final String mainTable = "tour";
     private static final String baseColumns = "main.id, main.name, main.type, main.start, main.end, " +
-            "main.discount, main.hotel, main.img, main.price ";
+            "main.description, main.discount, main.hotel, main.img, main.price ";
     private String foreignColumns = ", types.name, hotel.name";
     private String listColumns = baseColumns + foreignColumns;
-    private static final String detail = " , main.description ";
+    private static final String detail = " ,main.text";
 
     {
         LIST.setColumns(listColumns);
@@ -48,13 +48,14 @@ public class MySqlTourDao extends MySqlAbstractDao<Tour> implements TourDao {
         tour.setHotel(rs.getString("hotel.name"));
         tour.setType(rs.getString("types.name"));
         tour.setImg(rs.getString("main.img"));
+        tour.setDescription(rs.getString("main.description"));
         tour.setTypeId(rs.getInt("main.type"));
         tour.setHotelId(rs.getInt("main.hotel"));
         tour.setDiscount(rs.getInt("main.discount"));
         tour.setPrice(rs.getInt("main.price"));
         tour.setStart(format.format(rs.getDate("main.start")));
         tour.setEnd(format.format(rs.getDate("main.end")));
-        if (state == DETAILS) tour.setDescription(rs.getString("main.description"));
+        if (state == DETAILS) tour.setText(rs.getString("main.text"));
         return tour;
     }
 
@@ -69,7 +70,8 @@ public class MySqlTourDao extends MySqlAbstractDao<Tour> implements TourDao {
                 "hotel=" + been.getHotelId() + " ," +
                 "img=" + toQuote(been.getImg()) + " ," +
                 "price=" + been.getPrice() + " ," +
-                "description=" + toQuote(been.getDescription());
+                "description=" + toQuote(been.getDescription()) + " ," +
+                "text=" + toQuote(been.getText());
     }
 
     @Override
@@ -79,11 +81,12 @@ public class MySqlTourDao extends MySqlAbstractDao<Tour> implements TourDao {
                 been.getTypeId() + " ," +
                 toQuote(been.getStart()) + " ," +
                 toQuote(been.getEnd()) + " ," +
+                toQuote(been.getDescription()) + " ," +
                 been.getDiscount() + " ," +
                 been.getHotelId() + " ," +
                 toQuote(been.getImg()) + " ," +
                 been.getPrice() + " ," +
-                toQuote(been.getDescription());
+                toQuote(been.getText());
     }
 
     @Override

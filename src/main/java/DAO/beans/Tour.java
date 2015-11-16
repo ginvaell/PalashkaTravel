@@ -8,6 +8,7 @@ public class Tour {
     private int typeId;
     private String type;
     private String description;
+    private String text;
     private int discount;
     private int price;
     private String start;
@@ -112,17 +113,30 @@ public class Tour {
         this.hotelId = hotelId;
     }
 
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
     @Override
     public String toString() {
         return "Tour{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", type=" + type +
+                ", typeId=" + typeId +
+                ", type='" + type + '\'' +
                 ", description='" + description + '\'' +
+                ", text='" + text + '\'' +
                 ", discount=" + discount +
                 ", price=" + price +
-                ", start=" + start +
-                ", end=" + end +
+                ", start='" + start + '\'' +
+                ", end='" + end + '\'' +
+                ", img='" + img + '\'' +
+                ", hotel='" + hotel + '\'' +
+                ", hotelId=" + hotelId +
                 "}\n";
     }
 
