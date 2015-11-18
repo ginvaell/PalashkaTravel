@@ -16,18 +16,18 @@ import java.util.List;
 /**
  * Created by ginva_000 on 15.11.2015.
  */
-@WebServlet(name = "main", urlPatterns = "/main")
-public class Main extends HttpServlet {
+@WebServlet(name = "login", urlPatterns = "/login")
+public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DaoFactory factory = new MySqlDaoFactory();
-        TourDao dao = factory.getTourDao();
-        List<Tour> list = dao.read(null);
-        request.setCharacterEncoding("UTF-8");
-        request.setAttribute("tours", list);
-        request.getRequestDispatcher("/WEB-INF/jsp/main_page.jsp").forward(request, response);
+//        DaoFactory factory = new MySqlDaoFactory();
+//        TourDao dao = factory.getTourDao();
+//        List<Tour> list = dao.read(null);
+//        request.setCharacterEncoding("UTF-8");
+//        request.setAttribute("tours", list);
+        request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
     }
 }

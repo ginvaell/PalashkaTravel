@@ -16,8 +16,8 @@ import java.util.List;
 /**
  * Created by ginva_000 on 15.11.2015.
  */
-@WebServlet(name = "main", urlPatterns = "/main")
-public class Main extends HttpServlet {
+@WebServlet(name = "tours", urlPatterns = "/tours")
+public class Tours extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -28,6 +28,6 @@ public class Main extends HttpServlet {
         List<Tour> list = dao.read(null);
         request.setCharacterEncoding("UTF-8");
         request.setAttribute("tours", list);
-        request.getRequestDispatcher("/WEB-INF/jsp/main_page.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/jsp/tours.jsp").forward(request, response);
     }
 }
