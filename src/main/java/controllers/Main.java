@@ -3,7 +3,11 @@ package controllers;
 import DAO.DaoFactory;
 import DAO.TourDao;
 import DAO.beans.Tour;
+import DAO.beans.User;
 import DAO.mySql.MySqlDaoFactory;
+import tools.DaoHelper;
+import tools.Init;
+import tools.Utils;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,9 +27,10 @@ public class Main extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DaoFactory factory = new MySqlDaoFactory();
-        TourDao dao = factory.getTourDao();
+        TourDao dao = Init.getDaoFactory().getTourDao();
         List<Tour> list = dao.read(null);
+        User user = DaoHelper.getUserFromRequest(request);
+        Utils.reduceAllPrices(list, user);
         request.setCharacterEncoding("UTF-8");
         request.setAttribute("tours", list);
         request.getRequestDispatcher("/WEB-INF/jsp/main_page.jsp").forward(request, response);

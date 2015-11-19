@@ -53,6 +53,7 @@ public abstract class MySqlAbstractDao<T> {
         String sql = getInsertQuery(been);
         try (Connection connection = MySqlDaoFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
+            System.out.println(sql);
             return statement.executeUpdate() > 0;
 
         } catch (SQLException e) {
@@ -67,6 +68,7 @@ public abstract class MySqlAbstractDao<T> {
         String sql = getDeleteQuery(criteria);
         try (Connection connection = MySqlDaoFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
+            System.out.println(sql);
             return statement.executeUpdate() > 0;
 
         } catch (SQLException e) {
@@ -87,6 +89,7 @@ public abstract class MySqlAbstractDao<T> {
         String sql = getUpdateQuery(been, criteria);
         try (Connection connection = MySqlDaoFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
+            System.out.println(sql);
             return statement.executeUpdate()>0;
         } catch (SQLException e) {
             e.printStackTrace();

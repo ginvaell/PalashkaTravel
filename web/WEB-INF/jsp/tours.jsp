@@ -76,7 +76,7 @@
             </c:if>
             <div class="col-sm-4 col-lg-4 col-md-4">
                 <div class="thumbnail">
-                    <img src="http://placehold.it/320x150" alt="">
+                    <img src="/img/tours/${tour.img}" alt="">
 
                     <div class="caption">
                         <h4 class="pull-right"><c:out value="${tour.price}"/> $</h4>
@@ -117,6 +117,14 @@
             <div class="form-group">
                 <label>Name of tour:</label>
                 <input class="form-control" placeholder="Text">
+            </div>
+            <div class="form-group">
+                <label>Country</label>
+                <select class="form-control">
+                    <option>USA</option>
+                    <option>Russia</option>
+                    <option>France</option>
+                </select>
             </div>
             <div class="form-group">
                 <label>Type</label>

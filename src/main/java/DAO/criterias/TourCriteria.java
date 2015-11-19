@@ -11,6 +11,8 @@ public abstract class TourCriteria implements Criteria{
     private String hotelId;
     private String start;
     private String end;
+    private String cityId;
+    private String country;
     private String startOver;
     private String startUnder;
     private String endOver;
@@ -166,5 +168,21 @@ public abstract class TourCriteria implements Criteria{
 
     public void setEndUnder(String endUnder) {
         this.endUnder = endUnder;
+    }
+
+    public String getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(String cityId) {
+        this.cityId = cityId;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

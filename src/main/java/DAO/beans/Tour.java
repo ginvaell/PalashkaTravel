@@ -16,6 +16,9 @@ public class Tour {
     private String img;
     private String hotel;
     private int hotelId;
+    private String city;
+    private String country;
+
 
     public int getPrice() {
         return price;
@@ -121,6 +124,22 @@ public class Tour {
         this.text = text;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     @Override
     public String toString() {
         return "Tour{" +
@@ -137,6 +156,8 @@ public class Tour {
                 ", img='" + img + '\'' +
                 ", hotel='" + hotel + '\'' +
                 ", hotelId=" + hotelId +
+                ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
                 "}\n";
     }
 

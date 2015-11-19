@@ -7,6 +7,7 @@ public class Purchase {
     private int userId;
     private String tour;
     private int tourId;
+    private String date;
 
     public int getId() {
         return id;
@@ -56,6 +57,14 @@ public class Purchase {
         this.tourId = tourId;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return "Purchase{" +
@@ -65,6 +74,7 @@ public class Purchase {
                 ", userId=" + userId +
                 ", tour='" + tour + '\'' +
                 ", tourId=" + tourId +
+                ", date='" + date + '\'' +
                 "}\n";
     }
 }

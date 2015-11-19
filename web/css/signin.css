@@ -39,3 +39,7 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+.img-thumb{
+  width: 242px;
+  height: 200px;
+}

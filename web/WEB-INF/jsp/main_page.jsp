@@ -15,21 +15,21 @@
     <div class="carousel-inner">
         <div class="item active">
             <div class="fill"
-                 style="background-image:url('http://www.anywalls.com/pic/201304/1920x1080/anywalls.com-62766.jpg');"></div>
+                 style="background-image:url('/img/pages/anywalls.com-62766.jpg');"></div>
             <div class="carousel-caption">
                 <h2>Caption 1</h2>
             </div>
         </div>
         <div class="item">
             <div class="fill"
-                 style="background-image:url('http://www.look.com.ua/pic/201209/1920x1080/look.com.ua-29982.jpg');"></div>
+                 style="background-image:url('/img/pages/look.com.ua-29982.jpg');"></div>
             <div class="carousel-caption">
                 <h2>Caption 2</h2>
             </div>
         </div>
         <div class="item">
             <div class="fill"
-                 style="background-image:url('http://www.fonstola.ru/pic/201502/1920x1080/fonstola.ru-163517.jpg');"></div>
+                 style="background-image:url('/img/pages/fonstola.ru-163517.jpg');"></div>
             <div class="carousel-caption">
                 <h2>Caption 3</h2>
             </div>
@@ -74,7 +74,7 @@
         </c:if>
         <div class="col-sm-4 col-lg-4 col-md-4">
             <div class="thumbnail">
-                <img src="http://placehold.it/320x150" alt="">
+                <img src="/img/tours/${tour.img}" alt="">
 
                 <div class="caption">
                     <h4 class="pull-right"><c:out value="${tour.price}"/> $</h4>

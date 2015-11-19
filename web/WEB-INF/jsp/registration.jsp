@@ -10,11 +10,18 @@
         <div class="col-md-5">
             <h3>About you</h3>
 
-            <form name="sentMessage" id="contactForm">
+            <form name="sentMessage" id="contactForm" action="/registration" method="post">
                 <div class="control-group form-group">
                     <div class="controls">
-                        <label>Name</label>
-                        <input type="text" class="form-control" id="name" required
+                        <label>Login:</label>
+                        <input type="tel" name="login" class="form-control" id="phone" required
+                               data-validation-required-message="Please enter your phone number.">
+                    </div>
+                </div>
+                <div class="control-group form-group">
+                    <div class="controls">
+                        <label>Name:</label>
+                        <input type="text" name="name" class="form-control" id="name" required
                                data-validation-required-message="Please enter your name.">
 
                         <p class="help-block"></p>
@@ -22,15 +29,8 @@
                 </div>
                 <div class="control-group form-group">
                     <div class="controls">
-                        <label>Login</label>
-                        <input type="tel" class="form-control" id="phone" required
-                               data-validation-required-message="Please enter your phone number.">
-                    </div>
-                </div>
-                <div class="control-group form-group">
-                    <div class="controls">
                         <label>Password:</label>
-                        <input type="password" class="form-control" id="password" required
+                        <input type="password" name="password" class="form-control" id="password" required
                                data-validation-required-message="Please enter your email address.">
                     </div>
                 </div>

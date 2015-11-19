@@ -5,6 +5,7 @@ import DAO.beans.Tour;
 import DAO.TourDao;
 import DAO.criterias.TourCriteria;
 import DAO.mySql.MySqlDaoFactory;
+import tools.Init;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,10 +24,9 @@ public class TourTest extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DaoFactory factory = new MySqlDaoFactory();
-        TourDao tourDao = factory.getTourDao();
+        TourDao tourDao = Init.getDaoFactory().getTourDao();
         Tour tour = tourDao.readById(1);
-        TourCriteria criteria = factory.getTourCriteria();
+        TourCriteria criteria = Init.getDaoFactory().getTourCriteria();
         criteria.setPriceOver("50000");
         System.out.println(tourDao.read(null));
         request.setAttribute("tour", tour);

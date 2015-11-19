@@ -51,6 +51,10 @@ public class MySqlTourDaoTest {
         criteria.setType("Отдых");
         checkReadAll(criteria);
 
+        criteria = factory.getTourCriteria();
+        criteria.setCountry("Россия");
+        checkReadAll(criteria);
+
     }
 
     private void checkReadAll(TourCriteria criteria) {

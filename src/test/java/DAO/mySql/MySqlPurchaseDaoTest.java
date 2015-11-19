@@ -62,6 +62,7 @@ public class MySqlPurchaseDaoTest {
         been.setPrice(1);
         been.setTourId(1);
         been.setCount(5);
+        been.setDate("2015-11-05");
         assertTrue(dao.write(been));
         PurchaseCriteria criteria = factory.getPurchaseCriteria();
         criteria.setPriceUnder("2");
