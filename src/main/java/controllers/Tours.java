@@ -2,8 +2,7 @@ package controllers;
 
 import DAO.DaoFactory;
 import DAO.TourDao;
-import DAO.beans.Tour;
-import DAO.beans.User;
+import DAO.beans.*;
 import DAO.mySql.MySqlDaoFactory;
 import tools.DaoHelper;
 import tools.Init;
@@ -27,12 +26,23 @@ public class Tours extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        TourDao dao = Init.getDaoFactory().getTourDao();
-        List<Tour> list = dao.read(null);
-        User user = DaoHelper.getUserFromRequest(request);
-        Utils.reduceAllPrices(list, user);
+
         request.setCharacterEncoding("UTF-8");
+
+        TourDao dao = Init.getDaoFactory().getTourDao();
+        User user = DaoHelper.getUserFromRequest(request);
+
+        List<Tour> list = dao.read(DaoHelper.getTourCriteriaFromRequest(request, user));
+        Utils.reduceAllPrices(list, user);
+
+        List<Hotel> hotels = Init.getDaoFactory().getHotelDao().read(null);
+        List<Type> types = Init.getDaoFactory().getTypeDao().read(null);
+        List<City> cities = Init.getDaoFactory().getCityDao().read(null);
         request.setAttribute("tours", list);
+        request.setAttribute("hotels", hotels);
+        request.setAttribute("types", types);
+        request.setAttribute("cities", cities);
         request.getRequestDispatcher("/WEB-INF/jsp/tours.jsp").forward(request, response);
+
     }
 }

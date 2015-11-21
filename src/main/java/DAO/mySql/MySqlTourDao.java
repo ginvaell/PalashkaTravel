@@ -13,7 +13,7 @@ public class MySqlTourDao extends MySqlAbstractDao<Tour> implements TourDao {
 
     private static final String mainTable = "tour";
     private static final String baseColumns = "main.id, main.name, main.type, main.start, main.end, " +
-            "main.description, main.discount, main.hotel, main.img, main.price ";
+            "main.description, main.discount, main.hotel, main.img, main.price*(1-main.discount/100) ";
     private String foreignColumns = ", types.name, hotel.name, city.city, city.country";
     private String listColumns = baseColumns + foreignColumns;
     private static final String detail = " ,main.text";
@@ -54,7 +54,7 @@ public class MySqlTourDao extends MySqlAbstractDao<Tour> implements TourDao {
         tour.setTypeId(rs.getInt("main.type"));
         tour.setHotelId(rs.getInt("main.hotel"));
         tour.setDiscount(rs.getInt("main.discount"));
-        tour.setPrice(rs.getInt("main.price"));
+        tour.setPrice(rs.getInt("main.price*(1-main.discount/100)"));
         tour.setStart(format.format(rs.getDate("main.start")));
         tour.setEnd(format.format(rs.getDate("main.end")));
         if (state == DETAILS) tour.setText(rs.getString("main.text"));
