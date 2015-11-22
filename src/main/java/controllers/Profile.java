@@ -33,14 +33,12 @@ public class Profile extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        User user = DaoHelper.getUserFromRequest(request);
+        User user = (User)request.getSession().getAttribute("user");
         PurchaseDao dao = Init.getDaoFactory().getPurchaseDao();
         PurchaseCriteria purchaseCriteria = Init.getDaoFactory().getPurchaseCriteria();
         purchaseCriteria.setUserId(""+user.getId());
         List<Purchase> list = dao.read(purchaseCriteria);
-        request.setCharacterEncoding("UTF-8");
         request.setAttribute("purchases", list);
-        request.setAttribute("user", user);
         request.getRequestDispatcher("/WEB-INF/jsp/profile.jsp").forward(request, response);
     }
 }

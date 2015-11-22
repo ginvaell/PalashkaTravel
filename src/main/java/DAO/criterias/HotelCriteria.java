@@ -9,6 +9,7 @@ public abstract class HotelCriteria implements Criteria{
     private String name;
     private String starsOver;
     private String city;
+    private String country;
 
     public String getId() {
         return id;
@@ -48,5 +49,13 @@ public abstract class HotelCriteria implements Criteria{
 
     public void setCityId(String cityId) {
         this.cityId = cityId;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

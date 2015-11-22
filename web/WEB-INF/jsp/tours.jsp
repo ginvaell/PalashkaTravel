@@ -11,7 +11,7 @@
 <div class="row">
     <div class="col-lg-12">
         <h1 class="page-header">
-            Tours
+            <fmt:message key='tours'/>
             <small>Subheading</small>
         </h1>
         <ol class="breadcrumb">
@@ -28,10 +28,6 @@
             <c:forEach items="${tours}" var="tour" varStatus="status">
             <!-- Project One -->
 
-            <c:if test="${status.index % 3 == 0 && status.index != 0}">
-        </div>
-        <div class="row">
-            </c:if>
             <div class="col-sm-4 col-lg-4 col-md-4">
                 <div class="thumbnail">
                     <img src="/img/tours/${tour.img}" alt="">
@@ -47,7 +43,7 @@
                         <p class="pull-right"><c:out value="${tour.start}"/></p>
 
                         <p>
-                            Starts:
+                            <fmt:message key='start'/>:
                         </p>
                     </div>
                 </div>
@@ -62,64 +58,64 @@
         <%--<hr>--%>
         <form action="/tours" role="form" method="get">
             <div class="form-group">
-                <label>Name of tour:</label>
-                <input type="text" name="name" class="form-control" placeholder="Text">
+                <label><fmt:message key='tour.name'/>:</label>
+                <input type="text" name="name" class="form-control" placeholder="<fmt:message key='text'/>">
             </div>
             <div class="form-group">
-                <label>City</label>
+                <label><fmt:message key='city'/>:</label>
                 <select name="city" class="form-control">
-                    <option value="-1">ALL</option>
+                    <option value="-1"><fmt:message key='all'/></option>
                     <c:forEach items="${cities}" var="city">
                         <option value="${city.id}">${city.city} - ${city.country}</option>
                     </c:forEach>
                 </select>
             </div>
             <div class="form-group">
-                <label>Type</label>
+                <label><fmt:message key='type'/>:</label>
                 <select name="type" class="form-control">
-                    <option value="-1">ALL</option>
+                    <option value="-1"><fmt:message key='all'/></option>
                     <c:forEach items="${types}" var="type">
                         <option value="${type.id}">${type.name}</option>
                     </c:forEach>
                 </select>
             </div>
-            <label>Price:</label>
+            <label><fmt:message key='price'/>:</label>
 
             <div class="form-group input-group">
                 <%--<label class="pre">From:</label>--%>
-                <label class="input-group-addon" style="width: 4em">from</label>
+                <label class="input-group-addon" style="width: 4em"><fmt:message key='from'/></label>
                 <input type="number" name="priceOver" class="form-control " placeholder="25000" >
                 <label class="input-group-addon">$</label>
             </div>
             <div class="form-group input-group">
                 <%--<label>To:</label>--%>
-                <label class="input-group-addon" style="width: 4em">&nbsp to &nbsp</label>
+                <label class="input-group-addon" style="width: 4em"><fmt:message key='to'/></label>
                 <input type="number" name="priceUnder" class="form-control " placeholder="25000">
                 <label class="input-group-addon">$</label>
             </div>
-            <label>Continues:</label>
+            <label><fmt:message key='continues'/>:</label>
 
             <div class="form-group input-group">
                 <%--<label class="pre">From:</label>--%>
-                <label class="input-group-addon" style="width: 4em">from</label>
-                <input type="text" name="dateOver" class="form-control " placeholder="yyyy-mm-dd">
+                <label class="input-group-addon" style="width: 4em"><fmt:message key='from'/></label>
+                <input type="text" name="dateOver" class="form-control " placeholder=<fmt:message key='datePlaceholder'/>>
             </div>
             <div class="form-group input-group">
                 <%--<label>To:</label>--%>
-                <label class="input-group-addon" style="width: 4em">&nbsp to &nbsp</label>
-                <input type="text" name="dateUnder" class="form-control " placeholder="yyyy-mm-dd">
+                <label class="input-group-addon" style="width: 4em"><fmt:message key='to'/></label>
+                <input type="text" name="dateUnder" class="form-control " placeholder=<fmt:message key='datePlaceholder'/>>
             </div>
 
             <div class="form-group">
-                <label>Hotel</label>
+                <label><fmt:message key='hotel'/>:</label>
                 <select name="hotel" class="form-control">
-                    <option value="-1">ALL</option>
+                    <option value="-1"><fmt:message key='all'/></option>
                     <c:forEach items="${hotels}" var="hotel">
                         <option value="${hotel.id}">${hotel.name} - ${hotel.city}</option>
                     </c:forEach>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="submit" class="btn btn-primary"><fmt:message key='search'/></button>
         </form>
     </div>
 

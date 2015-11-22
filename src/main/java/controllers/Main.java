@@ -29,9 +29,8 @@ public class Main extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         TourDao dao = Init.getDaoFactory().getTourDao();
         List<Tour> list = dao.read(null);
-        User user = DaoHelper.getUserFromRequest(request);
+        User user = (User)request.getSession().getAttribute("user");
         Utils.reduceAllPrices(list, user);
-        request.setCharacterEncoding("UTF-8");
         request.setAttribute("tours", list);
         request.getRequestDispatcher("/WEB-INF/jsp/main_page.jsp").forward(request, response);
     }

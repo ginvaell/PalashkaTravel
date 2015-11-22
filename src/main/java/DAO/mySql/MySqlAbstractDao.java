@@ -119,7 +119,7 @@ public abstract class MySqlAbstractDao<T> {
 
     String getSelectQuery(Criteria criteria) {
         return "SELECT DISTINCT " + getColumns() + " FROM " + getTable() +
-                " AS main WHERE 1=1 "+getAdditional()+ (criteria!=null?criteria.parse():"");
+                " AS main WHERE 1=1 "+getAdditional()+ (criteria!=null?criteria.parse():"")+" ORDER BY main.id";
     }
 
     String getInsertQuery(T been) {

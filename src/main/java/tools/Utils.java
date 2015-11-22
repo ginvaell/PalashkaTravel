@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Utils {
     public static void reducePrice(Tour tour, User user) {
-        tour.setPrice(Math.round ((float)tour.getPrice()*(1-(float)(user.getDiscount())/100)));
+        tour.setPrice(Math.round ((float)tour.getPrice()*(1-(float)(user.getDiscount()+tour.getDiscount())/100)));
     }
 
     public static void reduceAllPrices(List<Tour> list, User user) {

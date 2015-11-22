@@ -7,6 +7,7 @@ public class Hotel {
     private String description;
     private int cityId;
     private String city;
+    private String country;
 
     public int getId() {
         return id;
@@ -56,6 +57,14 @@ public class Hotel {
         this.cityId = cityId;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     @Override
     public String toString() {
         return "Hotel{" +
@@ -65,6 +74,7 @@ public class Hotel {
                 ", description='" + description + '\'' +
                 ", cityId=" + cityId +
                 ", city='" + city + '\'' +
+                ", country='" + country + '\'' +
                 "}\n";
     }
 }

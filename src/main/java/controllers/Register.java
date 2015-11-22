@@ -21,7 +21,6 @@ import java.io.IOException;
 @WebServlet(name = "registration", urlPatterns = "/registration")
 public class Register extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
         String login = request.getParameter("login");
         String name = request.getParameter("name");
         String password = request.getParameter("password");
@@ -38,11 +37,6 @@ public class Register extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        DaoFactory factory = new MySqlDaoFactory();
-//        TourDao dao = factory.getTourDao();
-//        List<Tour> list = dao.read(null);
-//        request.setCharacterEncoding("UTF-8");
-//        request.setAttribute("tours", list);
         request.getRequestDispatcher("/WEB-INF/jsp/registration.jsp").forward(request, response);
     }
 }

@@ -9,24 +9,27 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" isELIgnored="false" %>
 <%--<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<jsp:useBean id="user" scope="session" type="DAO.beans.User" class="DAO.beans.User"/>
 
 <html lang="ru">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <head>
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/modern-business.css" rel="stylesheet"/>
-    <link href="css/signin.css" rel="stylesheet"/>
-    <link href="css/shop-homepage.css" rel="stylesheet"/>
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/modern-business.css" rel="stylesheet"/>
+    <link href="/css/signin.css" rel="stylesheet"/>
+    <link href="/css/shop-homepage.css" rel="stylesheet"/>
     <!-- DataTables CSS -->
-    <link href="js/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="/js/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css"
+          rel="stylesheet">
 
     <!-- DataTables Responsive CSS -->
-    <link href="js/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+    <link href="/js/bower_components/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
     <%--<link href="css/sb-admin-2.css" rel="stylesheet"/>--%>
     <title>Title</title>
 </head>
 <body>
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
 
@@ -45,26 +48,39 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="/log">Log in</a>
+                    <a href="/tours"><fmt:message key='tours'/></a>
                 </li>
-                <li>
-                    <a href="/logout">Log out</a>
-                </li>
-                <li>
-                    <a href="/tours">Tours</a>
-                </li>
-                <li>
-                    <a href="/profile">My Profile</a>
-                </li>
+                <c:choose>
+                    <c:when test="${user.role.equals('guest')}">
+                        <li>
+                            <a href="/log"><fmt:message key='signIn'/></a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li>
+                            <a href="/profile"><fmt:message key='profile'/></a>
+                        </li>
+                        <li>
+                            <a href="/logout"><fmt:message key='signOut'/></a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+
+
+                <c:if test="${user.role.equals('admin') || user.role.equals('manager')}">
+                    <li>
+                        <a href="/admin/tours"><fmt:message key='admin'/></a>
+                    </li>
+                </c:if>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Change Language<b
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><fmt:message key='language'/><b
                             class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="portfolio-1-col.html">Русский</a>
+                            <a href="/locale?locale=ru_RU">Русский</a>
                         </li>
                         <li>
-                            <a href="portfolio-2-col.html">English</a>
+                            <a href="/locale?locale=en_US">English</a>
                         </li>
 
                     </ul>

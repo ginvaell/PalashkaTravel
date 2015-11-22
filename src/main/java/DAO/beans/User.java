@@ -6,7 +6,7 @@ public class User {
     private String login;
     private String password;
     private int discount;
-    private String role;
+    private String role = "guest";
 
     public int getId() {
         return id;

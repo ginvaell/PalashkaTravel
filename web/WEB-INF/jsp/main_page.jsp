@@ -53,7 +53,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-
+                <fmt:message key='main.hot'/>
                 <small>Subheading</small>
             </h1>
             <ol class="breadcrumb">
@@ -68,10 +68,10 @@
         <c:forEach items="${tours}" var="tour" varStatus="status">
         <!-- Project One -->
 
-        <c:if test="${status.index % 3 == 0 && status.index != 0}">
-    </div>
-    <div class="row">
-        </c:if>
+        <%--<c:if test="${status.index % 3 == 0 && status.index != 0}">--%>
+    <%--</div>--%>
+    <%--<div class="row">--%>
+        <%--</c:if>--%>
         <div class="col-sm-4 col-lg-4 col-md-4">
             <div class="thumbnail">
                 <img src="/img/tours/${tour.img}" alt="">
@@ -87,23 +87,11 @@
                     <p class="pull-right"><c:out value="${tour.start}"/></p>
 
                     <p>
-                        Starts:
+                        <fmt:message key='start'/>:
                     </p>
                 </div>
             </div>
         </div>
-            <%--<div class="col-md-7">--%>
-            <%--<a href="portfolio-item.html">--%>
-            <%--<img class="img-responsive img-hover" src="http://placehold.it/700x300" alt="">--%>
-            <%--</a>--%>
-            <%--</div>--%>
-            <%--<div class="col-md-5">--%>
-            <%--<h3><c:out value="${tour.name}" /> </h3>--%>
-            <%--<h4><c:out value="${tour.type}" /></h4>--%>
-
-            <%--<p><c:out value="${tour.description}" /></p>--%>
-            <%--<a class="btn btn-primary" href="/item?id=${tour.id}"><i>View Project</i></a>--%>
-            <%--</div>--%>
 
         </c:forEach>
     </div>

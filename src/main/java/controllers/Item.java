@@ -30,8 +30,7 @@ public class Item extends HttpServlet {
         TourDao dao = Init.getDaoFactory().getTourDao();
         Tour tour = dao.readById(id);
         System.out.println(tour);
-        User user = DaoHelper.getUserFromRequest(request);
-        request.setAttribute("user", user);
+        User user = (User)request.getSession().getAttribute("user");
         if (tour != null) {
             Utils.reducePrice(tour, user);
             request.setAttribute("tour", tour);

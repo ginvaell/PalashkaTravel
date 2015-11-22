@@ -16,9 +16,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Created by ginva_000 on 15.11.2015.
- */
 @WebServlet(name = "tours", urlPatterns = "/tours")
 public class Tours extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,10 +24,9 @@ public class Tours extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.setCharacterEncoding("UTF-8");
 
         TourDao dao = Init.getDaoFactory().getTourDao();
-        User user = DaoHelper.getUserFromRequest(request);
+        User user = (User)request.getSession().getAttribute("user");
 
         List<Tour> list = dao.read(DaoHelper.getTourCriteriaFromRequest(request, user));
         Utils.reduceAllPrices(list, user);

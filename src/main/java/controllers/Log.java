@@ -20,12 +20,6 @@ public class Log extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        DaoFactory factory = new MySqlDaoFactory();
-//        TourDao dao = factory.getTourDao();
-//        List<Tour> list = dao.read(null);
-//        request.setCharacterEncoding("UTF-8");
-//        request.setAttribute("tours", list);
-//        request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
         response.sendRedirect("/main");
     }
 }

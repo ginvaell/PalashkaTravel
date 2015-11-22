@@ -52,7 +52,7 @@ public class Buy extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int tourId = Integer.valueOf(request.getParameter("id"));
         Tour tour = Init.getDaoFactory().getTourDao().readById(tourId);
-        User user = DaoHelper.getUserFromRequest(request);
+        User user = DaoHelper.getUserFromPrincipal(request);
         Utils.reducePrice(tour, user);
         request.setAttribute("tour", tour);
         request.setAttribute("user", user);

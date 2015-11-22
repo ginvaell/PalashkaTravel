@@ -1,5 +1,4 @@
 <jsp:useBean id="tour" scope="request" type="DAO.beans.Tour"/>
-<jsp:useBean id="user" scope="request" type="DAO.beans.User"/>
 <!-- Page Content -->
 
 <div class="row">
@@ -42,38 +41,38 @@
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title text-primary">Info: </h3>
+                <h3 class="panel-title text-primary"><fmt:message key='info'/>: </h3>
             </div>
             <div class="panel-body">
                 <div class="list-group">
                     <div class="list-group-item">
-                        <i class="fa fa-comment fa-fw"></i> Country:
+                        <i class="fa fa-comment fa-fw"></i> <fmt:message key='country'/>:
                                     <span class="pull-right text-primary small"><em><c:out
                                             value="${tour.country}"/></em>
                                     </span>
                     </div>
                     <div class="list-group-item">
-                        <i class="fa fa-comment fa-fw"></i> City:
+                        <i class="fa fa-comment fa-fw"></i> <fmt:message key='city'/>:
                                     <span class="pull-right text-primary small"><em><c:out value="${tour.city}"/></em>
                                     </span>
                     </div>
                     <div class="list-group-item">
-                        <i class="fa fa-comment fa-fw"></i> Start:
+                        <i class="fa fa-comment fa-fw"></i> <fmt:message key='start'/>:
                                     <span class="pull-right text-primary small"><em><c:out value="${tour.start}"/></em>
                                     </span>
                     </div>
                     <div class="list-group-item">
-                        <i class="fa fa-twitter fa-fw"></i> End:
+                        <i class="fa fa-twitter fa-fw"></i> <fmt:message key='end'/>:
                                     <span class="pull-right text-primary small"><em><c:out value="${tour.end}"/></em>
                                     </span>
                     </div>
                     <div class="list-group-item">
-                        <i class="fa fa-envelope fa-fw"></i> Hotel:
+                        <i class="fa fa-envelope fa-fw"></i> <fmt:message key='hotel'/>:
                                     <span class="pull-right text-primary"><em><c:out value="${tour.hotel}"/></em>
                                     </span>
                     </div>
                     <div class="list-group-item">
-                        <i class="fa fa-envelope fa-fw"></i> Price:
+                        <i class="fa fa-envelope fa-fw"></i> <fmt:message key='price'/>:
                                     <span class="pull-right text-primary"><em><c:out value="${tour.price}"/>$</em>
                                     </span>
                     </div>
@@ -82,7 +81,7 @@
                 <!-- /.list-group -->
                 <div class="list-group">
                     <a href="/buy?id=${tour.id}">
-                        <button type="button" class="btn btn-primary">Buy</button>
+                        <button type="button" class="btn btn-primary"><fmt:message key='buy.buy'/></button>
                     </a>
                 </div>
 

@@ -24,23 +24,19 @@ import java.io.IOException;
 @ServletSecurity(@HttpConstraint(rolesAllowed = {"client", "manager", "admin"}))
 public class UserEdit extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
 
-        User user = DaoHelper.getUserFromRequest(request);
+        User user = (User)request.getSession().getAttribute("user");
 
         String name = request.getParameter("name");
         String password = request.getParameter("password");
         user.setName(name);
         user.setPassword(password);
         Init.getDaoFactory().getUserDao().updateById(user, user.getId());
-        response.setCharacterEncoding("UTF-8");
         response.sendRedirect("/profile");
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        User user = DaoHelper.getUserFromRequest(request);
-        request.setAttribute("user", user);
         request.getRequestDispatcher("/WEB-INF/jsp/user_edit.jsp").forward(request, response);
     }
 }

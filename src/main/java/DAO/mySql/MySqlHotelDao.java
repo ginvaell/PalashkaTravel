@@ -11,7 +11,7 @@ import static DAO.mySql.Utils.toQuote;
 public class MySqlHotelDao extends MySqlAbstractDao<Hotel> implements HotelDao {
     private final String table = "hotel";
     private final String baseColumns = "main.id, main.stars, main.city, main.name";
-    private final String foreignColumns = ", city.city";
+    private final String foreignColumns = ", city.city, city.country";
     private final String listColumns = baseColumns + foreignColumns;
 
 
@@ -38,6 +38,7 @@ public class MySqlHotelDao extends MySqlAbstractDao<Hotel> implements HotelDao {
         Hotel.setName(resultSet.getString("main.name"));
 //        Hotel.setDescription(resultSet.getString("main.description"));
         Hotel.setCity(resultSet.getString("city.city"));
+        Hotel.setCountry(resultSet.getString("city.country"));
         return Hotel;
     }
 

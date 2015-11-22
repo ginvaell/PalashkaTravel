@@ -27,4 +27,8 @@
             <form-error-page>/index.jsp</form-error-page>
         </form-login-config>
     </login-config>
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+        <param-value>resources.messages</param-value>
+    </context-param>
 </web-app>
