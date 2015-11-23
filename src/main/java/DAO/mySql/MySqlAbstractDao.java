@@ -5,6 +5,7 @@ import DAO.beans.City;
 import DAO.criterias.BaseCriteria;
 import DAO.mySql.criterias.MySqlBaseCriteria;
 import com.sun.istack.internal.NotNull;
+import org.apache.log4j.Logger;
 
 import static DAO.mySql.Utils.*;
 
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class MySqlAbstractDao<T> {
+    private static final Logger log = Logger.getLogger(MySqlAbstractDao.class);
     protected State LIST = new State();
     protected State DETAILS = new State();
     protected State state = LIST;
@@ -33,7 +35,7 @@ public abstract class MySqlAbstractDao<T> {
     public List<T> read(Criteria criteria) {
         List<T> list = new ArrayList<>();
         String sql = getSelectQuery(criteria);
-        System.out.println(sql);
+        log.debug(sql);
         try (Connection connection = MySqlDaoFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql);
              ResultSet resultSet = statement.executeQuery()) {
@@ -43,7 +45,7 @@ public abstract class MySqlAbstractDao<T> {
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("read",e);
         }
         return list;
     }
@@ -51,13 +53,14 @@ public abstract class MySqlAbstractDao<T> {
     public boolean write(T been) {
         if (been == null) return false;
         String sql = getInsertQuery(been);
+        log.debug(sql);
         try (Connection connection = MySqlDaoFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
             System.out.println(sql);
             return statement.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("write",e);
         }
         return false;
 
@@ -66,13 +69,13 @@ public abstract class MySqlAbstractDao<T> {
     public boolean delete(Criteria criteria) {
         if (criteria == null) return false;
         String sql = getDeleteQuery(criteria);
+        log.debug(sql);
         try (Connection connection = MySqlDaoFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
-            System.out.println(sql);
             return statement.executeUpdate() > 0;
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("delete",e);;
         }
         return false;
 
@@ -87,12 +90,13 @@ public abstract class MySqlAbstractDao<T> {
     public boolean update(T been, Criteria criteria) {
         if (been == null || criteria == null) return false;
         String sql = getUpdateQuery(been, criteria);
+        log.debug(sql);
         try (Connection connection = MySqlDaoFactory.getConnection();
              PreparedStatement statement = connection.prepareStatement(sql)) {
             System.out.println(sql);
             return statement.executeUpdate()>0;
         } catch (SQLException e) {
-            e.printStackTrace();
+            log.error("update",e);;
         }
         return false;
     }

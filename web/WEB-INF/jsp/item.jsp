@@ -7,11 +7,6 @@
             <c:out value="${tour.name}"/>
             <small><c:out value="${tour.type}"/></small>
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="index.html">Home</a>
-            </li>
-            <li class="active">One Column Portfolio</li>
-        </ol>
     </div>
 </div>
 

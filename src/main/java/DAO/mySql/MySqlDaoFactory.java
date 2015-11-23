@@ -26,23 +26,23 @@ public class MySqlDaoFactory implements DaoFactory {
 
 
     public static Connection getConnection() throws SQLException {
-        driver = new FabricMySQLDriver();
-        DriverManager.registerDriver(driver);
-        return DriverManager.getConnection(url, user, password);
-//        InitialContext initContext= null;
-//        try {
-//            initContext = new InitialContext();
-//        } catch (NamingException e) {
-//            e.printStackTrace();
-//        }
-//        DataSource ds = null;
-//        try {
-//            ds = (DataSource) initContext.lookup("java:comp/env/jdbc/travel_agency");
-//        } catch (NamingException e) {
-//            e.printStackTrace();
-//        }
-//        Connection conn = ds.getConnection();
-//        return conn;
+//        driver = new FabricMySQLDriver();
+//        DriverManager.registerDriver(driver);
+//        return DriverManager.getConnection(url, user, password);
+        InitialContext initContext= null;
+        try {
+            initContext = new InitialContext();
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
+        DataSource ds = null;
+        try {
+            ds = (DataSource) initContext.lookup("java:comp/env/jdbc/travel_agency");
+        } catch (NamingException e) {
+            e.printStackTrace();
+        }
+        Connection conn = ds.getConnection();
+        return conn;
     }
 
     public TourDao getTourDao() {

@@ -1,19 +1,7 @@
 <jsp:useBean id="purchases" scope="request" type="java.util.List<DAO.beans.Purchase>"/>
 <!-- Page Content -->
 
-<div class="row">
-    <div class="col-lg-12">
-        <h1 class="page-header">
-            Item page
-            <small>Subheading</small>
-        </h1>
-        <ol class="breadcrumb">
-            <li><a href="index.html">Home</a>
-            </li>
-            <li class="active">One Column Portfolio</li>
-        </ol>
-    </div>
-</div>
+<hr>
 
 <div class="row">
 

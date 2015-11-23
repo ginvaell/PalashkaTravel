@@ -18,6 +18,10 @@
             <include-coda>/WEB-INF/jspf/footer.jspf</include-coda>
         </jsp-property-group>
     </jsp-config>
+    <error-page>
+        <error-code>400</error-code>
+        <location>/WEB-INF/jsp/error400.jsp</location>
+    </error-page>
     <login-config>
         <auth-method>FORM</auth-method>
         <realm-name>JDBCRealm</realm-name>

@@ -2,6 +2,7 @@ package DAO.mySql;
 
 import DAO.CityDao;
 import DAO.beans.City;
+import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

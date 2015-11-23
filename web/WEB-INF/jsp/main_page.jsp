@@ -49,20 +49,7 @@
 <div class="container">
 
 
-    <!-- Page Heading/Breadcrumbs -->
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">
-                <fmt:message key='main.hot'/>
-                <small>Subheading</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="index.html">Home</a>
-                </li>
-                <li class="active">One Column Portfolio</li>
-            </ol>
-        </div>
-    </div>
+    <hr>
     <!-- /.row -->
     <div class="row">
         <c:forEach items="${tours}" var="tour" varStatus="status">

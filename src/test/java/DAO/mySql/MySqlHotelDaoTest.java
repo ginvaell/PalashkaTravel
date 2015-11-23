@@ -28,7 +28,7 @@ public class MySqlHotelDaoTest {
         criteria.setName("Hotel1");
         checkReadAll(criteria);
         criteria = factory.getHotelCriteria();
-        criteria.setCity("Лондон");
+        criteria.setCity("Рим");
         checkReadAll(criteria);
         criteria = factory.getHotelCriteria();
         criteria.setStarsOver("3");
